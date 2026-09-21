@@ -47,15 +47,15 @@ const AddProductForm = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#F8FAFC] p-8 flex flex-col gap-6 font-['Lato',sans-serif]">
+    <div className="w-full min-h-screen bg-[#F8FAFC] p-4 md:p-8 flex flex-col gap-6 font-['Lato',sans-serif]">
       {/* Top Header Section */}
-      <div className="flex items-center justify-between w-full max-w-[1010px]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full max-w-[1010px] gap-4">
         <h2 className="text-[#023337] text-[20px] font-bold tracking-tight">
           Add New Product
         </h2>
 
         {/* Search Input */}
-        <div className="flex items-center w-[280px] h-[38px] px-3 rounded-lg border border-[#E5E7EB] bg-white shadow-sm focus-within:border-[#4EA674] transition-colors">
+        <div className="flex items-center w-full sm:w-[280px] h-[38px] px-3 rounded-lg border border-[#E5E7EB] bg-white shadow-sm focus-within:border-[#4EA674] transition-colors">
           <input
             type="text"
             name="search"
@@ -67,17 +67,18 @@ const AddProductForm = () => {
           <img
             src={settingIcon}
             alt="Search icon"
-            className="w-[16px] h-[16px] opacity-40 cursor-pointer hover:opacity-70"
+            className="w-[16px] h-[16px] opacity-40 cursor-pointer hover:opacity-70 flex-shrink-0"
           />
         </div>
       </div>
 
-      {/* Main Two-Column Layout */}
-      <div className="flex items-start gap-6 max-w-[1010px]">
+      {/* Main Two-Column Layout (Stacks on mobile/tablet, side-by-side on desktop) */}
+      <div className="flex flex-col lg:flex-row items-start gap-6 max-w-[1010px] w-full">
+        
         {/* ========================================= */}
         {/* LEFT COLUMN: Main Product Details Form    */}
         {/* ========================================= */}
-        <div className="w-[494px] rounded-xl bg-white border border-[#E5E7EB] shadow-sm flex flex-col p-6 gap-6">
+        <div className="w-full lg:w-[494px] rounded-xl bg-white border border-[#E5E7EB] shadow-sm flex flex-col p-4 md:p-6 gap-6">
           {/* Basic Details Section */}
           <div className="flex flex-col gap-4">
             <h3 className="text-[#1A202C] text-[16px] font-bold border-b border-transparent">
@@ -149,13 +150,13 @@ const AddProductForm = () => {
             </div>
 
             {/* Discounted Price & Tax Included */}
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col gap-1.5 flex-1">
                 <label className="text-[#1A202C] text-[13px] font-bold">
                   Discounted Price <span className="text-[#6A717F] font-normal text-[12px]">(Optional)</span>
                 </label>
-                <div className="flex h-[40px] px-3 items-center justify-between rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] focus-within:border-[#4EA674] focus-within:bg-white transition-colors">
-                  <div className="flex items-center w-1/3">
+                <div className="flex h-[40px] px-3 items-center justify-between rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] focus-within:border-[#4EA674] focus-within:bg-white transition-colors gap-2">
+                  <div className="flex items-center flex-1">
                     <span className="text-[#1A202C] text-[13px] font-bold mr-1">$</span>
                     <input
                       type="number"
@@ -165,13 +166,13 @@ const AddProductForm = () => {
                       className="w-full bg-transparent outline-none text-[#1A202C] text-[13px] font-bold"
                     />
                   </div>
-                  <span className="text-[#1A202C] text-[13px] font-bold">
+                  <span className="text-[#1A202C] text-[12px] sm:text-[13px] font-bold whitespace-nowrap">
                     Sale= ${salePrice}
                   </span>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1.5 w-[130px]">
+              <div className="flex flex-col gap-1.5 w-full sm:w-[130px]">
                 <label className="text-[#1A202C] text-[13px] font-bold">
                   Tax Included
                 </label>
@@ -208,7 +209,7 @@ const AddProductForm = () => {
               <label className="text-[#1A202C] text-[13px] font-bold">
                 Expiration
               </label>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex h-[40px] px-3 items-center justify-between flex-1 rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] relative focus-within:border-[#4EA674] focus-within:bg-white transition-colors">
                   <input
                     type="text"
@@ -240,7 +241,7 @@ const AddProductForm = () => {
           <div className="flex flex-col gap-4">
             <h3 className="text-[#1A202C] text-[16px] font-bold">Inventory</h3>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col gap-1.5 flex-1">
                 <label className="text-[#1A202C] text-[13px] font-bold">
                   Stock Quantity
@@ -287,7 +288,7 @@ const AddProductForm = () => {
 
               <label className="flex items-center gap-2 cursor-pointer select-none">
                 <div
-                  className="flex items-center justify-center w-[18px] h-[18px] rounded bg-[#4EA674]"
+                  className="flex items-center justify-center w-[18px] h-[18px] rounded bg-[#4EA674] flex-shrink-0"
                   onClick={() => setFormData((prev) => ({ ...prev, isHighlighted: !prev.isHighlighted }))}
                 >
                   {formData.isHighlighted && (
@@ -302,10 +303,10 @@ const AddProductForm = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-end gap-3 mt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-end gap-3 mt-2">
             <button
               type="button"
-              className="flex items-center gap-1.5 py-2 px-3 rounded-lg border border-[#E5E7EB] bg-white hover:bg-gray-50 transition-colors shadow-sm"
+              className="w-full sm:w-auto flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg border border-[#E5E7EB] bg-white hover:bg-gray-50 transition-colors shadow-sm"
             >
               <img src={peIcon} alt="Draft" className="w-[14px] h-[14px]" />
               <span className="text-[#1A202C] text-[13px] font-bold">
@@ -315,14 +316,17 @@ const AddProductForm = () => {
 
             <button
               type="button"
-              className="py-2 px-4 rounded-lg bg-[#4EA674] hover:bg-[#439366] text-white text-[13px] font-bold transition-colors shadow-sm"
+              className="w-full sm:w-auto py-2 px-4 rounded-lg bg-[#4EA674] hover:bg-[#439366] text-white text-[13px] font-bold transition-colors shadow-sm text-center"
             >
               Publish Product
             </button>
           </div>
         </div>
 
-        <div className="w-[485px] rounded-xl bg-white border border-[#E5E7EB] shadow-sm flex flex-col p-6 gap-6">
+        {/* ========================================= */}
+        {/* RIGHT COLUMN: Image & Categorization Form */}
+        {/* ========================================= */}
+        <div className="w-full lg:w-[485px] rounded-xl bg-white border border-[#E5E7EB] shadow-sm flex flex-col p-4 md:p-6 gap-6">
           <div className="flex flex-col gap-3">
             <h2 className="text-[#1A202C] text-[18px] font-bold">
               Upload Product Image
@@ -330,11 +334,11 @@ const AddProductForm = () => {
             <span className="text-[#023337] text-[14px] font-bold">
               Product Image
             </span>
-            <div className="w-full h-[255px] border border-[#E5E7EB] rounded-lg bg-white relative flex items-center justify-center overflow-hidden">
+            <div className="w-full h-[220px] sm:h-[255px] border border-[#E5E7EB] rounded-lg bg-white relative flex items-center justify-center overflow-hidden">
               <img
-                src={ phoneImg}
+                src={phoneImg}
                 alt="Product Preview"
-                className="h-[210px] object-contain"
+                className="h-[180px] sm:h-[210px] object-contain"
               />
               <button
                 type="button"
@@ -351,8 +355,10 @@ const AddProductForm = () => {
                 <span className="text-[#1A202C] text-[13px] font-medium">Replace</span>
               </button>
             </div>
-            <div className="flex items-center gap-3 mt-1">
-              <div className="w-[85px] h-[85px] rounded-lg border border-[#E5E7EB] relative flex items-center justify-center bg-white">
+            
+            {/* Thumbnail Row */}
+            <div className="flex items-center gap-3 mt-1 overflow-x-auto pb-1">
+              <div className="w-[85px] h-[85px] rounded-lg border border-[#E5E7EB] relative flex items-center justify-center bg-white flex-shrink-0">
                 <img
                   src={phoneImg}
                   alt="Thumb 1"
@@ -365,7 +371,7 @@ const AddProductForm = () => {
                   ✕
                 </button>
               </div>
-              <div className="w-[85px] h-[85px] rounded-lg border border-[#E5E7EB] relative flex items-center justify-center bg-white">
+              <div className="w-[85px] h-[85px] rounded-lg border border-[#E5E7EB] relative flex items-center justify-center bg-white flex-shrink-0">
                 <img
                   src={phoneImg}
                   alt="Thumb 2"
@@ -378,7 +384,7 @@ const AddProductForm = () => {
                   ✕
                 </button>
               </div>
-              <div className="w-[120px] h-[85px] rounded-lg border border-dashed border-[#9CA3AF] bg-[#F9FAFB] flex flex-col items-center justify-center gap-1 cursor-pointer hover:bg-gray-100 transition-colors">
+              <div className="w-[120px] h-[85px] rounded-lg border border-dashed border-[#9CA3AF] bg-[#F9FAFB] flex flex-col items-center justify-center gap-1 cursor-pointer hover:bg-gray-100 transition-colors flex-shrink-0">
                 <div className="w-5 h-5 rounded-full bg-[#4EA674] text-white flex items-center justify-center text-xs font-bold leading-none">
                   +
                 </div>
@@ -388,6 +394,7 @@ const AddProductForm = () => {
               </div>
             </div>
           </div>
+
           <div className="flex flex-col gap-4 mt-2">
             <h2 className="text-[#1A202C] text-[18px] font-bold">
               Categories
@@ -410,6 +417,7 @@ const AddProductForm = () => {
                 <img src={retIcon} alt="Dropdown" className="w-[12px] h-[12px] opacity-50 absolute right-3 pointer-events-none" />
               </div>
             </div>
+            
             <div className="flex flex-col gap-1.5">
               <label className="text-[#023337] text-[14px] font-bold">
                 Product Tag
@@ -434,39 +442,39 @@ const AddProductForm = () => {
               <label className="text-[#023337] text-[14px] font-bold">
                 Select your color
               </label>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
                 <button
                   type="button"
                   onClick={() => setFormData((p) => ({ ...p, color: 'green' }))}
-                  className={`w-11 h-11 rounded-lg bg-[#D2E9C4] transition-all ${
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#D2E9C4] transition-all ${
                     formData.color === 'green' ? 'ring-2 ring-gray-400 scale-105' : ''
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setFormData((p) => ({ ...p, color: 'pink' }))}
-                  className={`w-11 h-11 rounded-lg bg-[#F7CECE] transition-all ${
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#F7CECE] transition-all ${
                     formData.color === 'pink' ? 'ring-2 ring-gray-400 scale-105' : ''
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setFormData((p) => ({ ...p, color: 'gray' }))}
-                  className={`w-11 h-11 rounded-lg bg-[#D1DCDE] transition-all ${
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#D1DCDE] transition-all ${
                     formData.color === 'gray' ? 'ring-2 ring-gray-400 scale-105' : ''
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setFormData((p) => ({ ...p, color: 'cream' }))}
-                  className={`w-11 h-11 rounded-lg bg-[#F8F3D4] transition-all ${
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#F8F3D4] transition-all ${
                     formData.color === 'cream' ? 'ring-2 ring-gray-400 scale-105' : ''
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setFormData((p) => ({ ...p, color: 'dark' }))}
-                  className={`w-11 h-11 rounded-lg bg-[#333A42] transition-all ${
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#333A42] transition-all ${
                     formData.color === 'dark' ? 'ring-2 ring-gray-400 scale-105' : ''
                   }`}
                 />
@@ -474,6 +482,7 @@ const AddProductForm = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );

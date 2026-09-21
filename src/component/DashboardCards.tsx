@@ -88,7 +88,8 @@ export const SplitStat: React.FC<SplitStatProps> = ({ leftTitle, leftValue, left
 
 const DashboardCards: React.FC = () => {
   return (
-    <div className="flex gap-5 w-full">
+    /* Changed from `flex` to `flex flex-col md:flex-row` so cards stack vertically on mobile and sit side-by-side on desktop */
+    <div className="flex flex-col md:flex-row gap-5 w-full">
       <CardWrapper title="Total Sales">
         <StandardStat 
           mainValue="$350K" 
