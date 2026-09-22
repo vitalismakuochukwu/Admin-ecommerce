@@ -115,8 +115,6 @@ const CustomerDetails = () => {
       <h2 className="text-[#23272E] font-['Lato'] text-[18px] font-bold leading-[26px]">
         Customer Details
       </h2>
-
-      {/* Horizontal scroll wrapper for mobile table handling */}
       <div className="w-full overflow-x-auto pb-2">
         <div className="flex flex-col w-full">
           <CustomerTableHeader />
