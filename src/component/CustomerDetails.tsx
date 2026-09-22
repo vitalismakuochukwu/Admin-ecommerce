@@ -1,4 +1,3 @@
-import React from 'react';
 import editIcon from '../assets/edit.png';
 import deleteIcon from '../assets/delete.png';
 import circleIcon from '../assets/circle.png';
